@@ -14,7 +14,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     *(Somente as coisas que é permitido que o user envie)
      * @var list<string>
      */
     protected $fillable = [
@@ -25,7 +25,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be hidden for serialization.
-     *
+     *(Assuntos que não seriam enviados)
      * @var list<string>
      */
     protected $hidden = [
