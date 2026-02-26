@@ -7,16 +7,17 @@
         <title>{{config('app.name')}}</title>
         @vite('resources/css/app.css')
     </head>
-    <body class="bg-[#ffedd6] py-10">
+    <body class="bg-[#ffedd6]">
+        <div class="min-h-screen flex flex-col">
+            {{--header--}}
+            <x-header/>
 
-        {{--header--}}
+            <div class="flex-1 flex flex-col">
+                {{$slot}}
+            </div>
 
-        <x-header/>
-
-        {{$slot}}
-
-        {{--footer--}}
-        <x-footer/>
-
+            {{--footer--}}
+            <x-footer/>
+        </div>
     </body>
 </html>

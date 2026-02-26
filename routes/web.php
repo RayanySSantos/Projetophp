@@ -15,7 +15,7 @@ Route::post('/login', [LoginController::class, 'autenticar']);
 
 Route::middleware('auth')->group(function(){
 
-    Route::get('/dashboard', [SiteController::class, 'dashboard'])->middleware('auth')->name('site.deshboard');
+    Route::get('/dashboard', [SiteController::class, 'dashboard'])->middleware('auth')->name('site.dashboard');
 
     //Usei esse middleware para conferir se o usuario estava logado/validação
     Route::post('/logout',[LoginController::class, 'logout'])->middleware(middleware:'auth');
