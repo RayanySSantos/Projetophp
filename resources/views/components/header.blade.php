@@ -10,10 +10,21 @@
 
     {{-- Botões direita --}}
     <div class="flex items-center gap-3">
+        
+        @auth
+            <form action="/logout" method="POST">
+                @csrf
+                <button type="submit" class="bg-orange-500 text-black font-semibold px-4 py-1 border border-black hover:bg-orange-600 transition">
+                    Sair
+                </button>
+            </form>
+        @endauth
 
-        <button class="bg-orange-500 text-black font-semibold px-4 py-1 border border-black hover:bg-orange-600 transition">
-            Cadastrar
-        </button>
+        @guest
+            <a href="{{ route('site.login')}}" class="bg-orange-500 text-black font-semibold px-4 py-1 border border-black hover:bg-orange-600 transition">
+                Login
+            </a>
+        @endguest
 
         <div class="border border-black p-1 bg-white hover:bg-gray-100 transition cursor-pointer">
             GitHub

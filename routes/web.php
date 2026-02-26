@@ -2,11 +2,21 @@
 
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\Auth\LoginController;
-use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 
 //Site
-Route::get('/', [SiteController::class, 'index']);
+Route::get('/', [SiteController::class, 'index'])->name('site.index');
 
 //Login
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('site.login');
+//Validação do login
+Route::post('/login', [LoginController::class, 'autenticar']);
+
+
+Route::middleware('auth')->group(function(){
+
+    Route::get('/dashboard', [SiteController::class, 'dashboard'])->middleware('auth')->name('site.deshboard');
+
+    //Usei esse middleware para conferir se o usuario estava logado/validação
+    Route::post('/logout',[LoginController::class, 'logout'])->middleware(middleware:'auth');
+});
