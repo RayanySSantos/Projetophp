@@ -2,7 +2,7 @@
 
     <main class="py-10">
         <h1>
-        Vaja seus hábitos ganharem vida
+        Bem Vindo ao sistema
         </h1>
     </main>
     

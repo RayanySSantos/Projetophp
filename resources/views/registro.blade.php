@@ -3,14 +3,31 @@
         <section class="w-full max-w-[460px] border-4 border-[#0f5f8f] bg-[#f7f7f7] p-3 shadow-[0_0_0_2px_#222]">
             <div class="border border-[#cfd3d6] bg-[#f3f4f5] p-5 md:p-6">
                 <div class="flex items-start justify-between">
-                    <h1 class="text-4xl font-black text-[#1b1f23] leading-none">Logue</h1>
+                    <h1 class="text-4xl font-black text-[#1b1f23] leading-none">Registre-se</h1>
                     <span class="text-[#1b1f23] text-lg leading-none mt-1">▸</span>
                 </div>
 
-                <p class="mt-4 text-[#4b4f54] text-xl">Insira seus dados para acessar</p>
+                <p class="mt-4 text-[#4b4f54] text-xl">Preencha as informações para cadastrar seus hábitos</p>
 
-                <form action="{{route('site.login')}}" method="POST" class="mt-6 space-y-4">
+                <form action="{{ route('auth.registro')}}" method="POST" class="mt-6 space-y-4">
                     @csrf
+
+                    <div>
+                        <label for="name" class="block text-[#33373d] font-semibold mb-1">Nome</label>
+                        <input
+                            id="name"
+                            type="text"
+                            name="name"
+                            value="{{ old('name') }}"
+                            placeholder="Seu nome"
+                            class="w-full bg-white px-3 py-2 border-2 border-[#565a5f] focus:outline-none focus:border-black @error ('name') border-red-500 @enderror"
+                        >
+                        @error('name')
+                            <p class="text-red-500 text-sm">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
 
                     <div>
                         <label for="email" class="block text-[#33373d] font-semibold mb-1">Email</label>
@@ -45,13 +62,28 @@
                        @enderror
                     </div>
 
-                    <button type="submit" class="w-full mt-2 bg-[#ff5c2f] text-[#191919] font-bold py-2 border-2 border-black shadow-[inset_0_-2px_0_#d4471f] hover:brightness-95 transition">
-                        Login
-                    </button>
+                    <div>
+                        <label for="password_confirmation" class="block text-[#33373d] font-semibold mb-1">Repita sua Senha</label>
+                        <input
+                            id="password_confirmation"
+                            type="password"
+                            name="password_confirmation"
+                            placeholder="********"
+                            class="w-full bg-white px-3 py-2 border-2 border-[#565a5f] focus:outline-none focus:border-black @error ('password_confirmation') border-red-500 @enderror"
+                        >
+                        @error('password_confirmation')
+                            <p class="text-red-500 text-sm">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
 
+                    <button type="submit" class="w-full mt-2 bg-[#ff5c2f] text-[#191919] font-bold py-2 border-2 border-black shadow-[inset_0_-2px_0_#d4471f] hover:brightness-95 transition">
+                        Registrar-se
+                    </button>
                     <p class="text-center text-[#4b4f54] pt-2">
-                        Ainda não tem conta?
-                        <a href="{{route('site.registro')}}" class="underline font-semibold hover:opacity-50 transition">Registre-se</a>
+                        Já tem conta?
+                        <a href="{{'site.login'}}" class="underline font-semibold hover:opacity-50 transition">Faça login</a>
                     </p>
                 </form>
             </div>
